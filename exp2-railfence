@@ -1,0 +1,90 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class CustomRailFence {
+
+    public static String encryptMessage(String plaintext, int rails) {
+        char[][] railMatrix = new char[rails][plaintext.length()];
+        for (int i = 0; i < rails; i++) Arrays.fill(railMatrix[i], '\n');
+
+        boolean dirDown = false;
+        int row = 0, col = 0;
+
+        for (int i = 0; i < plaintext.length(); i++) {
+            if (row == 0 || row == rails - 1)
+                dirDown = !dirDown;
+
+            railMatrix[row][col++] = plaintext.charAt(i);
+            row = dirDown ? row + 1 : row - 1;
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < rails; i++) {
+            for (int j = 0; j < plaintext.length(); j++) {
+                if (railMatrix[i][j] != '\n')
+                    result.append(railMatrix[i][j]);
+            }
+        }
+        return result.toString();
+    }
+
+    public static String decryptMessage(String cipher, int rails) {
+        char[][] railMatrix = new char[rails][cipher.length()];
+        for (int i = 0; i < rails; i++) Arrays.fill(railMatrix[i], '\n');
+
+        boolean dirDown = false;
+        int row = 0, col = 0;
+
+        // Mark the positions
+        for (int i = 0; i < cipher.length(); i++) {
+            if (row == 0 || row == rails - 1)
+                dirDown = !dirDown;
+
+            railMatrix[row][col++] = '*';
+            row = dirDown ? row + 1 : row - 1;
+        }
+
+        // Fill the rail matrix
+        int index = 0;
+        for (int i = 0; i < rails; i++) {
+            for (int j = 0; j < cipher.length(); j++) {
+                if (railMatrix[i][j] == '*' && index < cipher.length()) {
+                    railMatrix[i][j] = cipher.charAt(index++);
+                }
+            }
+        }
+
+        // Read in a zigzag manner to reconstruct the plaintext
+        StringBuilder result = new StringBuilder();
+        row = 0;
+        col = 0;
+        dirDown = false;
+
+        for (int i = 0; i < cipher.length(); i++) {
+            if (row == 0 || row == rails - 1)
+                dirDown = !dirDown;
+
+            result.append(railMatrix[row][col++]);
+            row = dirDown ? row + 1 : row - 1;
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter text to encrypt: ");
+        String text = scanner.nextLine();
+        
+        System.out.print("Enter number of rails: ");
+        int rails = scanner.nextInt();
+        
+        scanner.nextLine(); // Consume newline
+
+        String encrypted = encryptMessage(text, rails);
+        System.out.println("Encrypted: " + encrypted);
+        System.out.println("Decrypted: " + decryptMessage(encrypted, rails));
+
+        scanner.close();
+    }
+}
