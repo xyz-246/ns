@@ -1,0 +1,93 @@
+import java.awt.Point; import java.util.Scanner; class PlayfairCipher {
+    private int length = 0; private String[][] table;
+    public static void main(String[] args) { new PlayfairCipher();
+    }
+     
+    public PlayfairCipher() {
+    Scanner sc = new Scanner(System.in); System.out.print("Enter the key for Playfair cipher: "); String key = parseString(sc.nextLine());
+    table = cipherTable(key);
+    System.out.print("Enter the plaintext to be encrypted: "); String input = parseString(sc.nextLine());
+    sc.close();
+    String encryptedText = cipher(input);
+    String decryptedText = decode(encryptedText); keyTable();
+    printResults(encryptedText, decryptedText);
+    }
+    private String parseString(String text) {
+    return text.toUpperCase().replaceAll("[^A-Z]", "").replace("J", "I");
+    }
+    private String[][] cipherTable(String key) { String[][] playfairTable = new String[5][5];
+    String keyString = key + "ABCDEFGHIKLMNOPQRSTUVWXYZ"; boolean[] used = new boolean[26];
+    int k = 0;
+    for (char c : keyString.toCharArray()) { if (!used[c - 'A']) {
+    playfairTable[k / 5][k % 5] = String.valueOf(c); used[c - 'A'] = true;
+    k++;
+    }
+    }
+    return playfairTable;
+    }
+    private String cipher(String text) {
+    length = text.length() / 2 + text.length() % 2; StringBuilder modifiedText = new StringBuilder(text);
+    
+    for (int i = 0; i < length - 1; i++) {
+    if (modifiedText.charAt(2 * i) == modifiedText.charAt(2 * i + 1)) { modifiedText.insert(2 * i + 1, 'X');
+    length++;
+    }
+    }
+    if (modifiedText.length() % 2 != 0) { modifiedText.append('X');
+    }
+    String[] digraphs = new String[length];
+     
+    for (int i = 0; i < length; i++) {
+    digraphs[i] = modifiedText.charAt(2 * i) + "" + modifiedText.charAt(2 * i + 1);
+    }
+    return encodeDigraphs(digraphs);
+    }
+    private String encodeDigraphs(String[] digraphs) { StringBuilder result = new StringBuilder();
+    for (String digraph : digraphs) { char a = digraph.charAt(0); char b = digraph.charAt(1); Point p1 = getPoint(a); Point p2 = getPoint(b);
+    if (p1.x == p2.x) {
+    p1.y = (p1.y + 1) % 5;
+    p2.y = (p2.y + 1) % 5;
+    } else if (p1.y == p2.y) { p1.x = (p1.x + 1) % 5;
+    p2.x = (p2.x + 1) % 5;
+    } else {
+    int temp = p1.y; p1.y = p2.y; p2.y = temp;
+    }
+    result.append(table[p1.x][p1.y]).append(table[p2.x][p2.y]);
+    }
+    return result.toString();
+    }
+    private String decode(String text) { StringBuilder result = new StringBuilder(); for (int i = 0; i < text.length(); i += 2) {
+    char a = text.charAt(i); char b = text.charAt(i + 1); Point p1 = getPoint(a); Point p2 = getPoint(b);
+    if (p1.x == p2.x) {
+    p1.y = (p1.y + 4) % 5;
+    p2.y = (p2.y + 4) % 5;
+    } else if (p1.y == p2.y) { p1.x = (p1.x + 4) % 5;
+    p2.x = (p2.x + 4) % 5;
+    } else {
+    int temp = p1.y; p1.y = p2.y; p2.y = temp;
+     
+    }
+    
+    result.append(table[p1.x][p1.y]).append(table[p2.x][p2.y]);
+    }
+    return result.toString();
+    }
+    private Point getPoint(char c) { for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+    if (table[i][j].charAt(0) == c) { return new Point(i, j);
+    }
+    }
+    }
+    return null;
+    }
+    private void keyTable() { System.out.println("\nPlayfair Cipher Key Matrix:"); for (String[] row : table) {
+    for (String s : row) { System.out.print(s + " ");
+    }
+    System.out.println();
+    }
+    System.out.println();
+    }
+    private void printResults(String encryptedText, String decryptedText) { System.out.println("Encrypted Message: " + encryptedText); System.out.println("Decrypted Message: " + decryptedText);
+    }
+    }
+    
