@@ -1,0 +1,26 @@
+import java.util.Scanner; class Hellman {
+    private static long power(long a, long b, long p) { long res = 1;
+    a = a % p; while (b > 0) {
+    if ((b & 1) == 1) {
+    res = (res * a) % p;
+    }
+    b = b >> 1;
+    a = (a * a) % p;
+    }
+    return res;
+    }
+    public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+     
+    System.out.print("Enter a prime number P: "); long P = scanner.nextLong(); System.out.print("Enter a primitive root G: "); long G = scanner.nextLong(); System.out.print("Enter Alice's private key (a): "); long a = scanner.nextLong(); System.out.print("Enter Bob's private key (b): "); long b = scanner.nextLong();
+    scanner.close();
+    long x = power(G, a, P); long y = power(G, b, P); long ka = power(y, a, P); long kb = power(x, b, P);
+    System.out.println("Public key for Alice (x): " + x); System.out.println("Public key for Bob (y): " + y); System.out.println("Secret key for Alice: " + ka); System.out.println("Secret key for Bob: " + kb);
+    if (ka == kb) {
+    System.out.println("Key exchange successful! Shared secret key: " + ka);
+    } else {
+    System.out.println("Error in key exchange!");
+    }
+    }
+    }
+    
