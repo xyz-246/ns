@@ -1,0 +1,14 @@
+import java.util.*; class TransCipher {
+    public static void main(String args[]) { Scanner sc = new Scanner(System.in); System.out.println("Enter the plain text:");
+    String s = sc.nextLine().replaceAll("\\s+", "");
+    int col = 4, row = (int) Math.ceil((double) s.length() / col); char[][] ch = new char[row][col];
+    int l = 0;
+    for (int i = 0; i < row; i++) for (int j = 0; j < col; j++)
+    ch[i][j] = (l < s.length()) ? s.charAt(l++) : '#'; char[][] trans = new char[col][row];
+    for (int i = 0; i < row; i++) for (int j = 0; j < col; j++)
+    trans[j][i] = ch[i][j]; System.out.print("Encrypted Text: "); for (char[] t : trans)
+    for (char c : t) System.out.print(c);
+    sc.close();
+    }
+}
+    
