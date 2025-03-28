@@ -1,0 +1,32 @@
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);  
+        System.out.print("Enter a message to hash: ");
+        String inputString = scanner.nextLine();  // Allow multi-word input
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(inputString.getBytes());
+            byte[] digest = md.digest();
+
+            // Convert byte array to hex format
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : digest) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');  // Ensuring 2-character representation
+                hexString.append(hex);
+            }
+
+            System.out.println("\nMD5 Hash of the input string:\n" + hexString.toString());
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("Error: MD5 Algorithm not found.");
+            e.printStackTrace();
+        }
+
+        scanner.close();
+    }
+}
