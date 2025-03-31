@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive India Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Interactive India Map</h2>
+
+<!-- Image map for India -->
+<img src="https://www.mapsofindia.com/images2/india-map-2019.jpg" usemap="#metroid" ismap width="600">
+
+<!-- Image map definition with clickable areas for states -->
+<map name="metroid" id="metroid">
+    <area href="#" shape="circle" coords="208,606,50" alt="Tamil Nadu" title="Tamil Nadu" onclick="showDetails('Tamil Nadu')">
+    <area href="#" shape="rect" coords="130,531,164,535" alt="Karnataka" title="Karnataka" onclick="showDetails('Karnataka')">
+    <area href="#" shape="poly" coords="227,490,238,511,230,536,198,535,202,503" alt="Andhra Pradesh" title="Andhra Pradesh" onclick="showDetails('Andhra Pradesh')">
+    <area href="#" shape="rect" coords="154,606,166,621" alt="Kerala" title="Kerala" onclick="showDetails('Kerala')">
+</map>
+
+<p id="info"><b>Click on a state to see details.</b></p>
+
+<script>
+    // Function to display details when a state is clicked
+    function showDetails(state) {
+        let details = {
+            "Tamil Nadu": {
+                language: "Tamil",
+                food: "Idli, Dosa, Sambar",
+                population: "72 million"
+            },
+            "Karnataka": {
+                language: "Kannada",
+                food: "Bisi Bele Bath, Mysore Pak",
+                population: "68 million"
+            },
+            "Andhra Pradesh": {
+                language: "Telugu",
+                food: "Pesarattu, Pulihora",
+                population: "49 million"
+            },
+            "Kerala": {
+                language: "Malayalam",
+                food: "Appam, Puttu, Sadhya",
+                population: "35 million"
+            }
+        };
+
+        let stateDetails = details[state];
+        document.getElementById('info').innerHTML = `
+            <b>State:</b> ${state} <br>
+            <b>Language:</b> ${stateDetails.language} <br>
+            <b>Famous Food:</b> ${stateDetails.food} <br>
+            <b>Population:</b> ${stateDetails.population}
+        `;
+    }
+</script>
+
+</body>
+</html>
