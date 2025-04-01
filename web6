@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search User</title>
+    <script>
+        function searchUser() {
+            // Static user data (instead of loading from XML)
+            var users = [
+                {
+                    "userid": "usr01",
+                    "username": "Alice",
+                    "address": "Coimbatore",
+                    "phone": "9123456789",
+                    "email": "alice@gmail.com"
+                },
+                {
+                    "userid": "usr02",
+                    "username": "Bob",
+                    "address": "Chennai",
+                    "phone": "9111111111",
+                    "email": "bob@gmail.com"
+                }
+            ];
+
+            var userIdInput = document.getElementById("userId").value;
+
+            // Search for the user in the static data
+            for (var i = 0; i < users.length; i++) {
+                var id = users[i].userid;
+                if (id === userIdInput) {
+                    var name = users[i].username;
+                    var address = users[i].address;
+                    var phone = users[i].phone;
+                    var email = users[i].email;
+                    
+                    document.getElementById("result").innerHTML =
+                        "User ID: " + id + "<br>" +
+                        "Name: " + name + "<br>" +
+                        "Address: " + address + "<br>" +
+                        "Phone: " + phone + "<br>" +
+                        "Email: " + email;
+                    return;
+                }
+            }
+            document.getElementById("result").innerHTML = "User not found.";
+        }
+    </script>
+</head>
+<body>
+    <h2>Search User</h2>
+    <input type="text" id="userId" placeholder="Enter User ID">
+    <button onclick="searchUser()">Get Details</button>
+    <p id="result"></p>
+</body>
+</html>
