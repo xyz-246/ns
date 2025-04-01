@@ -1,0 +1,367 @@
+https://docs.google.com/document/d/1dCMVxPsrq3QnC6kiayrztlFyUTTZ8F2syALCaor-kos/edit?usp=sharing
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map</title>
+</head>
+<body>
+   <img src="india_map.jpg" usemap="#indiaMap"> <!-- Match name exactly -->
+
+    <map name="indiaMap">  <!-- Changed from "metroid" to "indiaMap" -->
+        <area href="TamilNadu.html" shape="circle" coords="208,606,50" title="Tamil Nadu">
+        <area href="Karnataka.html" shape="rect" coords="130,531,164,535" title="Karnataka">
+        <area href="AndhraPradesh.html" shape="poly" coords="227,490,238,511,230,536,198,535,202,503" title="Andhra Pradesh">
+        <area href="Kerala.html" shape="rect" coords="154,606,166,621" title="Kerala">
+    </map>
+</body>
+</html>
+
++++
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Tamil Nadu</title>
+</head>
+<body>
+    <center><h1>Tamil Nadu</h1></center>
+    <hr>
+    <ul>
+        <li>Area: 1,30,058 Sq. Kms.</li>
+        <li>Capital: Chennai</li>
+        <li>Language: Tamil</li>
+        <li>Population: 6,21,10,839</li>
+    </ul>
+    <hr>
+    <a href="imagemap.html">India Map</a>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Karnataka</title>
+</head>
+<body>
+    <center><h1>Karnataka</h1></center>
+    <hr>
+    <ul>
+        <li>Area: 1,91,791 Sq. Kms</li>
+        <li>Capital: Bangalore</li>
+        <li>Language: Kannada</li>
+        <li>Population: 5,27,33,958</li>
+    </ul>
+    <hr>
+    <a href="imagemap.html">India Map</a>
+</body>
+</html>
+
+—--+++
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Andhra Pradesh</title>
+</head>
+<body>
+    <center><h1>Andhra Pradesh</h1></center>
+    <hr>
+    <ul>
+        <li>Area: 2,75,068 Sq. Kms</li>
+        <li>Capital: Hyderabad</li>
+        <li>Language: Telugu</li>
+        <li>Population: 7,57,27,541</li>
+    </ul>
+    <hr>
+    <a href="imagemap.html">India Map</a>
+</body>
+</html>
+++++
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Kerala</title>
+</head>
+<body>
+    <center><h1>Kerala</h1></center>
+    <hr>
+    <ul>
+        <li>Area: 38,863 Sq. Kms.</li>
+        <li>Capital: Thiruvananthapuram</li>
+        <li>Language: Malayalam</li>
+        <li>Population: 3,18,38,619</li>
+    </ul>
+    <hr>
+    <a href="imagemap.html">India Map</a>
+</body>
+</html>
+
+
+
+
+
+
+
+—------------------------------------------------------------------------------------------
+2)<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Types</title>
+    <style>
+        /* Internal CSS */
+        body { background-color: lightgray; font-family: Arial, sans-serif; }
+        .internal { color: blue; font-size: 20px; }
+    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+</head>
+<body>
+
+    <h2 class="internal">This is styled using Internal CSS</h2>
+    <p style="color: green;">This is styled using Inline CSS</p> <!-- Inline CSS -->
+    <p class="external">This is styled using External CSS</p>
+
+</body>
+</html>
+
+—-------------------
+.external {
+    color: red;
+    font-weight: bold;
+}
+
+
+—----------------------------------------------------------------------------------------------------------------------------
+3))))))))::::::
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["username"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var password = document.forms["myForm"]["password"].value;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (name == "") {
+                alert("Name must be filled out!");
+                return false;
+            }
+            if (email == "" || !email.match(emailPattern)) {
+                alert("Please enter a valid email address!");
+                return false;
+            }
+
+            if (password == "" || password.length < 6) {
+                alert("Password must be at least 6 characters long!");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Simple Form Validation</h2>
+    <form name="myForm" onsubmit="return validateForm()">
+        Name: <input type="text" name="username"><br><br>
+        Email: <input type="email" name="email"><br><br>
+        Password: <input type="password" name="password"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
+
+
+—-------------------------------------------------------------------------------------------------------------------------
+5)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px #aaa;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Online Exam</h2>
+        <form id="quiz-form">
+            <label for="seat">Seat Number:</label>
+            <input type="text" id="seat" required><br><br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br><br>
+            
+            <p>1. The Earth is flat. (T/F)</p>
+            <input type="radio" name="q1" value="false"> False
+            <input type="radio" name="q1" value="true"> True
+            
+            <p>2. Water boils at 100°C. (T/F)</p>
+            <input type="radio" name="q2" value="true"> True
+            <input type="radio" name="q2" value="false"> False
+            
+            <p>3. The sun rises in the west. (T/F)</p>
+            <input type="radio" name="q3" value="false"> False
+            <input type="radio" name="q3" value="true"> True
+            
+            <p>4. A triangle has three sides. (T/F)</p>
+            <input type="radio" name="q4" value="true"> True
+            <input type="radio" name="q4" value="false"> False
+            
+            <p>5. The capital of France is Paris. (T/F)</p>
+            <input type="radio" name="q5" value="true"> True
+            <input type="radio" name="q5" value="false"> False
+            
+            <br><br>
+            <button type="button" onclick="submitQuiz()">Submit</button>
+        </form>
+    </div>
+
+    <div class="container hidden" id="result-section">
+        <h3>Thank you for participating!</h3>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            let answers = {
+                q1: "false",
+                q2: "true",
+                q3: "false",
+                q4: "true",
+                q5: "true"
+            };
+            let score = 0;
+            for (let key in answers) {
+                let selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === answers[key]) {
+                    score++;
+                }
+            }
+            
+            document.getElementById("quiz-form").classList.add("hidden");
+            document.getElementById("result-section").classList.remove("hidden");
+            document.getElementById("score").innerText = "Your Score: " + score + "/5";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+++-------------------------------------------------------------------------------------------------------------------------
+6))))) xml file::::
+<userlist>
+    <user>
+        <userid>usr01</userid>
+        <username>Alice</username>
+        <address>Coimbatore</address>
+        <phone>9123456789</phone>
+        <email>alice@gmail.com</email>
+    </user>
+    <user>
+        <userid>usr02</userid>
+        <username>Bob</username>
+        <address>Chennai</address>
+        <phone>9111111111</phone>
+        <email>bob@gmail.com</email>
+    </user>
+</userlist>
+
+
+index.html
+++++
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search User</title>
+    <script>
+        function searchUser() {
+            var xhttp = new XMLHttpRequest();
+            // Make sure the path is correct if your files are in the same folder
+            xhttp.open("GET", "userlist.xml", false);
+            xhttp.send();
+            var xmlDoc = xhttp.responseXML;
+            
+            // Check if the XML was loaded correctly
+            if (!xmlDoc) {
+                document.getElementById("result").innerHTML = "Error loading XML file.";
+                return;
+            }
+            
+            var userIdInput = document.getElementById("userId").value;
+            var users = xmlDoc.getElementsByTagName("user");
+            
+            for (var i = 0; i < users.length; i++) {
+                var id = users[i].getElementsByTagName("userid")[0].textContent;
+                if (id === userIdInput) {
+                    var name = users[i].getElementsByTagName("username")[0].textContent;
+                    var address = users[i].getElementsByTagName("address")[0].textContent;
+                    var phone = users[i].getElementsByTagName("phone")[0].textContent;
+                    var email = users[i].getElementsByTagName("email")[0].textContent;
+                    
+                    document.getElementById("result").innerHTML =
+                        "User ID: " + id + "<br>" +
+                        "Name: " + name + "<br>" +
+                        "Address: " + address + "<br>" +
+                        "Phone: " + phone + "<br>" +
+                        "Email: " + email;
+                    return;
+                }
+            }
+            document.getElementById("result").innerHTML = "User not found.";
+        }
+    </script>
+</head>
+<body>
+    <h2>Search User</h2>
+    <input type="text" id="userId" placeholder="Enter User ID">
+    <button onclick="searchUser()">Get Details</button>
+    <p id="result"></p>
+</body>
+</html>
+
+—
+
+
+
+
+
+
+
+
+
+
+
